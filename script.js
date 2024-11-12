@@ -1,6 +1,6 @@
-let year = 2010;
+let year = 2005;
 let month = 08; // August
-let name = "Kohe"
+let name = "Enter name"
 
 
 
