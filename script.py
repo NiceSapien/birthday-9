@@ -1,6 +1,6 @@
 year = 2005
 month = 8  # August
-name = "Jbk0"
+name = "Enter name"
 
 # Step 1: Convert the year and month into a total number of months
 total_months = year * 12 + month
