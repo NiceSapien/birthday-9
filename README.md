@@ -1,7 +1,13 @@
 # Birthday-9
 This tool is used to check the approximate time when the process of someone's existence began. It also gives extra info such as nnn failure status, segs season, etc.
 ## Using
-Just declare three variables(example values):
+You can use it [here](https://nicesapien.github.io/birthday-9). Enter your birth month, year and your name. Click Check and then you'll be good to go.
+
+or using scripts:
+
+
+Just declare three variables with your birth info(example values):
+
 `year`(2005)
 `month`(08)
 `name`(Enter name here)
