@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday-9</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Existence beginning checker</h1>
+        
+        <section>
+            <form id="inputForm">
+                <label for="year">Enter Year:</label>
+                <input type="number" id="year" name="year" placeholder="e.g. 2005" required>
+                
+                <label for="month">Enter Month:</label>
+                <input type="number" id="month" name="month" min="1" max="12" placeholder="e.g. 8" required>
+                
+                <label for="name">Enter Name:</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Steve" required>
+                
+                <button type="button" id="calculateButton">Check</button>
+            </form>
+            
+            <p id="result"></p>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById("calculateButton").addEventListener("click", function() {
+            // Get values from input fields
+            const year = parseInt(document.getElementById("year").value);
+            const month = parseInt(document.getElementById("month").value);
+            const name = document.getElementById("name").value;
+
+            if (isNaN(year) || isNaN(month) || !name) {
+                document.getElementById("result").innerHTML = "Please fill out all fields correctly.";
+                return;
+            }
+
+            // Step 1: Convert the year and month into a total number of months
+            let totalMonths = year * 12 + month;
+
+            // Step 2: Subtract 9 months from the total number of months
+            totalMonths -= 9;
+
+            // Step 3: Calculate the new year
+            const newYear = Math.floor(totalMonths / 12);
+
+            // Step 4: Calculate the new month
+            const newMonth = totalMonths % 12;
+
+            // Adjust the month and year if the new month is zero
+            let displayMonth = 0;
+            let displayYear = 0;
+            if (newMonth === 0) {
+                displayMonth = 12;
+                displayYear = newYear - 1;
+            } else {
+                displayMonth = newMonth;
+                displayYear = newYear;
+            }
+
+            // Determine the season based on the month
+            function getSeason(month) {
+                if (month === 12 || month === 1 || month === 2) {
+                    return 'Winter';
+                } else if (month >= 3 && month <= 5) {
+                    return 'Spring';
+                } else if (month >= 6 && month <= 8) {
+                    return 'Summer';
+                } else if (month >= 9 && month <= 11) {
+                    return 'Fall';
+                }
+            }
+
+            // Get the season for the calculated month
+            const season = getSeason(displayMonth);
+
+            // Prepare the output
+            let resultText = `Month: ${displayMonth}<br>Year: ${displayYear}<br>${name}'s parents did segs in ${season}.`;
+            if (displayMonth === 11) {
+                resultText += `<br>${name}'s dad failed NNN.`;
+            }
+
+            // Display the result
+            document.getElementById("result").innerHTML = resultText;
+        });
+    </script>
+</body>
+</html>
